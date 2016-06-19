@@ -1,0 +1,102 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.ArrayList;
+
+public class Calling {
+
+    public static void fDFS(Vertex u, LinkedList<Integer> sorting) {
+
+	//compare with TS
+	u.vis = true;
+	for(Vertex v : u.out) {
+	    if(!v.vis) {
+		fDFS(v, sorting);
+	    }
+	}
+	sorting.addFirst(u.id);
+	return sorting;
+    }
+    
+    public static void sDFS(Vertex u, cnt) {
+	//basic DFS, all visited vertices get cnt
+	u.vis = true;
+	u.comp = cnt;
+	for(Vertex v : u.in) {
+	    if(!v.vis) {
+		sDFS(v, cnt);
+	    }
+	}
+    }
+    
+    public static void doubleDFS(Vertex[] G) {
+	
+	//first calc a topological sort by first DFS
+	LinkedList<Integer> sorting = new LinkedList<Integer>();
+	for(int i = 0; i < G.length; i++) {
+	    if(!G[i].vis) {
+		fDFS(G[i], sorting);
+	    }
+	}
+	//then go through the sort and do another DFS on G^T
+	//each tree is a component and gets a unique number
+	int cnt = 0;
+	for(int i : sorting) {
+	    if(!G[i].vis) {
+		sDFS(G[i], cnt++);
+	    }
+	}
+    }
+    
+    public static void SCC(Vertex[] G) {
+	
+	doubleDFS(Vertex[] G);
+	
+
+    }
+
+
+    public static void main(String[] args) {
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	String[] in = br.readLine().split(" ");
+	while(true) {
+	    int n = Integer.parseInt(in[0]);
+	    int m = Integer.parseInt(in[1]);
+	    if(n == 0 && m == 0) break;
+	    String[][] calls = new String[m][2];
+	    HashMap<String, Integer> names = new HashMap<String, Integer>();
+	    int cnt = 0;
+	    for(int i = 0; i < m; i++) {
+		calls[i] = br.readLine().split(" ");
+		if(!names.contains(calls[i][0])) names.put(calls[i][0], cnt++);
+		if(!names.contains(calls[i][1])) names.put(calls[i][1], cnt++);
+	    }
+	    Vertex[] G = new Vertex[n];
+	    for(int i = 0; i < n; i++) {
+		G[i] = new Vertex(i);
+	    }
+	    for(int i = 0; i < m; i++) {
+		int a = hm.get(calls[i][0]);
+		int b = hm.get(calls[i][1]);
+		G[a].out.add(G[b]);
+		G[b].in.add(G[a]);
+	    }
+	    
+	}
+    }
+}
+
+class Vertex {
+
+    int id = -1;
+    boolean vis = false;
+
+    ArrayList<Vertex> in = new ArrayList<Vertex>();
+    ArrayList<Vertex> out = new ArrayList<Vertex>();
+
+    public Vertex(int id) {
+	this.id = id;
+    }
+
+}

@@ -1,0 +1,84 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Bombs {
+
+    public static void BFS(Vertex[][] graph, int startr, int startc, int endr, int endc) {
+	Queue<Vertex> q = new LinkedList<Vertex>();
+	graph[startr][startc].distance = 0;
+	graph[startr][startc].visited = true;
+	q.add(graph[startr][startc]);
+	while(!q.isEmpty()) {
+	    Vertex u = q.poll();
+	    for(Vertex v : u.adj) {
+		if(v.visited) continue;
+		v.distance = u.distance + 1;
+		v.visited = true;
+		if(v.rpos == endr && v.cpos == endc) return;
+		q.add(v);
+	    }
+	}
+    }
+
+    public static void main(String[] args) throws IOException {
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	while(true) {
+	    String[] input = br.readLine().split(" ");
+	    int R = Integer.parseInt(input[0]);
+	    int C = Integer.parseInt(input[1]);
+	    boolean[][] bloc = new boolean[R][C];
+	    if(R == 0 && C == 0) break;
+	    int r = Integer.parseInt(br.readLine());
+	    for(int i = 0; i < r; i++) {
+		input = br.readLine().split(" ");
+		int row = Integer.parseInt(input[0]);
+		int nob = Integer.parseInt(input[1]);
+		for(int j = 2; j < nob + 2; j++) {
+		    bloc[row][Integer.parseInt(input[j])] = true;
+		}
+	    }
+	    input = br.readLine().split(" ");
+	    int startr = Integer.parseInt(input[0]);
+	    int startc = Integer.parseInt(input[1]);
+	    input = br.readLine().split(" ");
+	    int endr = Integer.parseInt(input[0]);
+	    int endc = Integer.parseInt(input[1]);
+	    Vertex[][] g = new Vertex[R][C];
+	    for(int i = 0; i < C; i++) {
+		for(int j = 0; j < R; j++) {
+		    g[i][j] = new Vertex(i, j);
+		    if(bloc[i][j]) g[i][j].isBomb = true;
+		    else g[i][j].isBomb = false;
+		}
+	    }
+	    for(int i = 0; i < C; i++) {
+		for(int j = 0; j < R; j++) {
+		    if(bloc[i][j]) continue;
+		    if(i > 0 && !bloc[i-1][j]) g[i][j].adj.add(g[i-1][j]);
+		    if(i < C - 1 && !bloc[i+1][j]) g[i][j].adj.add(g[i+1][j]);
+		    if(j > 0 && !bloc[i][j-1]) g[i][j].adj.add(g[i][j-1]);
+		    if(j < R - 1 && !bloc[i][j+1]) g[i][j].adj.add(g[i][j+1]);
+		}
+	    }
+	    BFS(g, startr, startc, endr, endc);
+	    System.out.println(g[endr][endc].distance);
+	}
+    }
+}
+
+class Vertex {
+    int rpos;
+    int cpos;
+    int distance = Integer.MAX_VALUE;
+    boolean visited = false;
+    boolean isBomb;
+    LinkedList<Vertex> adj = new LinkedList<Vertex>();
+
+    public Vertex(int rpos, int cpos) {
+	this.rpos = rpos;
+	this.cpos = cpos;
+    }
+}

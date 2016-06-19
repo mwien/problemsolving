@@ -1,0 +1,12 @@
+import random
+
+print 20
+
+int S = randInt(1, 30)
+int A = randInt(1, 30)
+int m = randInt(1, 200)
+
+print str(S) + " " + str(A) + " " + str(m)
+
+for i in range(0, m):
+    print randInt(1, S) + " " + randInt(1, A) + " " + randInt(1, S) + " " + randInt(1, A)

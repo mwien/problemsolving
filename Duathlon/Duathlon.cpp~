@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int t;
+    while(cin >> t) {
+	int n;
+	cin >> n;
+	double[] run = new double[n];
+	double[] cyc = new double[n];
+	for(int i = 0; i < n; i++) {
+	    cin >> run[i];
+	    cin >> cyc[i];
+	}
+	int maxdiff = -1;
+	int cycdist = -1;
+	int rundist = -1;
+	for(int i = 0; i < t*100+1; i++) {
+	    double bestofrest = (1 << 30);
+	    int ind = -1;
+	    for(int j = 0; j < n-1; j++) {
+		double time = cyc[j]*(t-i/100.0) + run[t-i]*(i/100.0);
+		if(time < bestofrest) {
+		    bestofrest = time;
+		    ind = j;
+		}
+	    }
+	    double ctime = cyc[n-1]*(t-i/100.0) + run[t-i]*(i/100.0);
+	    if(maxdist < ctime - bestofrest) {
+		maxdiff = ctime - bestofrest;
+		cycdist = t-i/100.0;
+		rundist = i/100.0;
+	    }
+	}
+	cout << "The cheater can win by " << maxdiff << " seconds with r = " << rundist << "km and k = " << cycdist << "km." << endl;
+    }
+
+}
