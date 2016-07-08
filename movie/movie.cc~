@@ -1,0 +1,16 @@
+#include<iostream>
+
+using namespace std;
+
+int A[2*100005];
+
+int main()
+{
+    int t;
+    cin >> t;
+    for(int c = 0; c < t; c++) {
+	int n, m;
+	cin >> n >> m;
+	
+    }
+}

@@ -1,0 +1,36 @@
+import sys
+import random
+
+N = random.randint(3, 30)
+print N
+adj = [[0 for i in range(N)] for j in range(N)]
+for i in range(N):
+    for j in range(N):
+        if i == j:
+            print 0
+            continue
+        adj[i][j] =  random.randint(1, 100)
+        print adj[i][j]
+
+for k in range(N):
+    for i in range(N):
+        for j in range(N):
+            if(adj[i][j] > adj[i][k] + adj[k][j]):
+                adj[i][j] = adj[i][k] + adj[k][j]
+
+K = random.randint(1, 100)
+print K
+for i in range(K):
+    a = random.randint(0, 15)
+    b = random.randint(16, 29)
+    print a
+    print b
+    print random.randint(adj[a][b], 2*adj[a][b])
+
+Q = 100
+print Q
+a = random.randint(0, 15)
+b = random.randint(16, 29)
+print a
+print b
+
