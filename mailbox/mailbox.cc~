@@ -1,0 +1,33 @@
+#include<iostream>
+#include<algorithm>
+
+using namespace std;
+
+int h[15][105][105];
+
+int rec(int k, int m, int s, int t, int r) {
+    if(r == 0 || s >= t) return 0;
+    int min = (1 << 30);
+    for(int i = s; i <= t; i++) {
+	if(h[r][i+1][t] == -1) h[r][i+1][t] = rec(k, m, i+1, t, r);
+	if(h[r-1][s]-1] == -1) h[r][s][i-1] = rec
+	int res = i + max(
+    }
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    for(int tc = 0; tc < n; tc++) {
+	int k,m;
+	cin >> k >> m;
+	for(int i = 0; i < k; i++) {
+	    for(int j = 0; j < m; j++) {
+		for(int l = 0; l < m; l++) {
+		    h[i][j][l] = -1;
+		}
+	    }
+	}
+    }
+}
