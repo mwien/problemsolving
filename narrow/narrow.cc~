@@ -1,0 +1,14 @@
+#include<iostream>
+#include<utility>
+
+using namespace std;
+
+int main()
+{
+    while(true) {
+	int n, k;
+	cin >> n >> k;
+	if(n == 0 && k == 0) break;
+	vector<pair<int, int>> g;
+    }
+}
