@@ -1,0 +1,29 @@
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+int main()
+{
+    int g;
+    cin >> g;
+    vector<int> sieve;
+    vector<int> primes;
+    
+    for(int i = 1; i < 10005; ++i) {
+	sieve.push_back(i);
+    }
+    sieve[0] = 0;
+    for(int i = 2; i < 10005; ++i) {
+	if(sieve[i-1] != 0) {
+	    primes.push_back(sieve[i-1]);
+	    for(int j = 2 * sieve[i-1]; j < 10006; j += sieve[i-1]) {
+		sieve[j-1] = 0;
+	    }
+	}
+    }
+    
+    for(int i = 0; i < g; ++i) {
+	
+    }
+}
