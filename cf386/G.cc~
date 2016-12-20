@@ -1,0 +1,16 @@
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+int main()
+{
+    int n, t , k;
+    cin >> n >> t >> k;
+    vector<int> d;
+    for(int i = 0; i < t; ++i) {
+	int a;
+	cin >> a;
+	d.push_back(a);
+    }
+}
