@@ -1,0 +1,12 @@
+#include<iostream>
+
+using namespace std;
+
+int T[1005][1005];
+
+int main()
+{
+    int x, n, m, t;
+    cin >> x >> n >> m >> t;
+    
+}

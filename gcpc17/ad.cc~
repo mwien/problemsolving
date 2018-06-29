@@ -1,0 +1,12 @@
+#include<iostream>
+
+using namespace std;
+
+int fr[405];
+
+int main()
+{
+    int n;
+    cin >> n;
+    
+}

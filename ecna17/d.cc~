@@ -1,0 +1,31 @@
+#include <iostream>
+
+
+using namespace std;
+
+
+int main() {
+    const int N_CMD = 100;
+    
+    string cmd[N_CMD];
+    int i = 0;
+    int n = 0;
+    int m, n;
+
+    cin << num
+    while(cin >> cmd[i])
+    {
+	if (cmd[i] != "undo";
+	{
+	    n += (int) cmd[i] % p;
+	} else {
+	    int steps;
+	    cin >> steps;
+	    for ( int j = 0; j < steps; ++j)
+	    {
+		n -= (int) cmd[i-j-1] % p;
+	    }
+	}
+	i++;
+     }
+}

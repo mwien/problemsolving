@@ -1,0 +1,61 @@
+#include<iostream>
+#include<string>
+#include<vector>
+#include<algorithm>
+#include<cmath>
+
+using namespace std;
+
+int gcd(int a, int b)
+{
+    while (b > 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+bool div(int &a, int &b, int d) {
+    if(a % d*d == 0 && b % d == 0) {
+	a /= d*d;
+	b /= d;
+	return true;
+    } else if(a % d == 0 && b % d*d == 0) {
+	a /= d;
+	b /= d*d;
+	return true;
+    } else return false;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int n;
+    cin >> n;
+    bool poss = true;
+    for(int i = 0; i < n; ++i) {
+	int a, b;
+	cin >> a >> b;
+	int r = gcd(a,b);
+	cout <<  r << endl;
+		      while (r%2 == 0) {
+	    if(!div(a, b, 2)) poss = false;
+	    r = r/2;
+	}
+		       
+	for (int i = 3; i <= sqrt(r); i = i+2) {
+	    while (r%i == 0) {
+		if(!div(a, b, i)) poss = false;
+		r = r/i;
+	    }
+	}
+	if(r > 2) {
+	    if(!div(a, b, i)) poss = false;
+	}
+	if(a == 1 && b == 1 && poss) cout << "Yes" << endl;
+	else cout << "No" << endl;
+    }
+}

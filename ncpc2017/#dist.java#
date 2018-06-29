@@ -1,0 +1,44 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args){
+        BufferedReader scanner = new (System.in);
+        int anzahl = scanner.nextInt();
+        int laenge = scanner.nextInt();
+
+        LinkedList<String> queue = new LinkedList();
+        Boolean[] visited = new Boolean[(int) Math.pow(2,laenge)];
+        Arrays.fill(visited, false);
+        for (int i=0; i<anzahl; i++){
+            String a = scanner.next();
+            queue.push(a);
+            visited[Integer.parseInt(a, 2)] = true;
+        }
+
+        String zuletztBesucht = "";
+
+        while(!queue.isEmpty()){
+            String v = queue.pollLast();
+            //System.out.println(v + "\n");
+            for (String a : nachbarn(v)){
+                //System.out.println(a);
+                if (!visited[Integer.parseInt(a, 2)]){
+                    queue.push(a);
+                    visited[Integer.parseInt(a, 2)] = true;
+                    zuletztBesucht = a;
+                }
+            }
+        }
+
+        System.out.println(zuletztBesucht);
+    }
+
+    public static String[] nachbarn(String a){
+        String[] nachbar = new String[a.length()];
+        nachbar[0] = (a.charAt(0)=='0' ? "1": "0").concat(a.substring(1));
+        for (int i=1; i<a.length(); i++){
+            nachbar[i] = a.substring(0,i).concat(a.charAt(i)=='0' ? "1": "0").concat(a.substring(i+1));
+        }
+        return nachbar;
+    }
+}

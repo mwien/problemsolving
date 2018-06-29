@@ -1,0 +1,19 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+  int n;
+  cin >> n;
+  char cs;
+  cin >> cs;
+  string ln;
+  
+  if(cs == 'e') {
+
+  } else if(cs == 'd') {
+
+  }
+}
