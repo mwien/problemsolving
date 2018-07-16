@@ -1,3 +1,6 @@
+// TAGS: AD HOC
+// Problem: http://codeforces.com/gym/101667/attachments (Problem D)
+
 #include<iostream>
 
 using namespace std;

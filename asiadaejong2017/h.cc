@@ -1,3 +1,6 @@
+// TAGS: FFT
+// Problem: http://codeforces.com/gym/101667/attachments (Problem H)
+
 #define _USE_MATH_DEFINES
 #include<iostream>
 #include<string>

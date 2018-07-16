@@ -1,3 +1,5 @@
+// TAGS: AD HOC
+
 #include<iostream>
 #include<algorithm>
 

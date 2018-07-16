@@ -1,3 +1,6 @@
+// TAGS: AD HOC, RECURSION
+// Problem: http://codeforces.com/gym/101667/attachments (Problem F)
+
 #include<iostream>
 
 using namespace std;
