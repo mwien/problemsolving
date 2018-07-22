@@ -44,5 +44,12 @@ int main() {
       }
     }
   }
+  for(int i = 1; i <=d; ++i) {
+      cout << vals[i][0] << ": ";
+      for(int j = 0; j < k; ++j) {
+	  cout << T[i][j] << " ";
+      }
+      cout << endl;
+  }
   cout << T[d][k-1] << endl;
 }
