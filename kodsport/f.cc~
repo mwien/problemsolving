@@ -1,0 +1,15 @@
+#include<iostream>
+
+using namespace std;
+
+char grid[55][55];
+
+int main()
+{
+    int n, m;
+    cin >> n >> m;
+    bool done = false;
+    while(!done) {
+	
+    }
+}

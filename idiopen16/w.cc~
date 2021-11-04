@@ -1,0 +1,9 @@
+// https://open.kattis.com/problems/heritage
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+  
+}
