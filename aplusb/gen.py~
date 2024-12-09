@@ -1,5 +1,0 @@
-import random
-
-print 10
-for i in xrange(10):
-    print random.randint(-10, 10)

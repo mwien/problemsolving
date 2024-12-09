@@ -1,7 +1,0 @@
-import sys
-
-
-q = int(input().strip())
-for a0 in range(q):
-    n,m,p = input().strip().split(' ')
-    n,m,p = [int(n),int(m),float(p)]

@@ -1,7 +1,0 @@
-import sys
-
-list = []
-for line in sys.stdin:
-    list.append(int(line))
-    list = list[1:]
-    print list

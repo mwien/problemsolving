@@ -1,9 +1,0 @@
-// https://open.kattis.com/problems/trainsorting
-#include<iostream>
-
-using namespace std;
-
-int main()
-{
-  
-}
